@@ -68,6 +68,6 @@ app.get("/services", (req, res) => {
 
 // Port
 const port = 3000;
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Server listening on ${port}`);
 });
