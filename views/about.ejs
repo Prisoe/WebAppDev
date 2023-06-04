@@ -1,0 +1,78 @@
+<!-- -----------about page---------- -->
+
+<!-- Partials -->
+<%- include('partials/header') %>
+
+  <%- include('partials/head') %>
+
+
+  <!-- HTML structure -->
+  <!-- about page -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="images/prosper.jpg" />
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About Me</h1>
+          <p>
+            My parents' named me Prosperity, so I've been used to huge responsiblityes all my life. Vying to be one of the best Machine Learning Engineers just because I love Data and Numbers. I enjoy learning especially when it's a little challenging. Thanks for visiting. 
+
+          </p>
+        </hr>
+          <h3>Lovely to meet you, Prosper Alabi</h3>
+
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('skills')">
+              Skills
+            </p>
+            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+            <p class="tab-links" onclick="opentab('education')">Education</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>Machine Learing</span><br />Designing Machine Learning Models</li>
+              <li><span>Web Development</span><br />Web app Development</li>
+              <li>
+                <span>App Development</span><br />Building Android/iOS apps
+              </li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li>
+                <span>2022 - Current</span><br />Centennial College, Software Engineering
+              </li>
+              <li><span>2015 - 2018</span><br />Team lead at StarApp LLC.</li>
+              <li>
+                <span>2017 - 2019</span><br />UI/UX Design Executive at Coin
+                Digital Ltd.
+              </li>
+              <li>
+                <span>2016 - 2017</span><br />Internship at ekart eCommerce.
+              </li>
+            </ul>
+          </div>
+          <div class="tab-contents" id="education">
+            <ul>
+              <li>
+                <span>Current</span><br />Centennial College, Software Engineering
+              </li>
+              <li><span>2020</span><br />Computer Sciences, Harvard Extension School</li>
+              <li><span>2018</span><br />Mechanical Engineering Technology</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download CV -->
+  <a href="images/resume.pdf" download class="btn btn2">Download CV</a>
+
+
+
+  <!-- footer -->
+  <%- include('partials/footer') %>
+</html>

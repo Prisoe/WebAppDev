@@ -1,0 +1,50 @@
+<!-- -----------contact page---------- -->
+
+<!-- Partials -->
+<%- include('partials/header') %>
+
+<%- include('partials/head') %>
+
+<!-- HTML structure -->
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact Me</h1>
+          <p><i class="fas fa-paper-plane"></i> prosperalabi7@gmail.com</p>
+          <p><i class="fas fa-phone-square-alt"></i> 6475754993</p>
+          <div class="social-icons">
+            <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-twitter-square"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/prosperalabi/"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+          <a href="images/resume.pdf" download class="btn btn2">Download CV</a>
+        </div>
+        <div class="contact-right">
+          <form name="submit-to-google-sheet">
+            <input type="text" name="Name" placeholder="Your Name" required />
+            <input
+              type="email"
+              name="Email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="Message"
+              rows="6"
+              placeholder="Your Message"
+            ></textarea>
+            <button type="submit" class="btn btn2" method="post">Submit</button>
+          </form>
+          <span id="msg"></span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- footer -->
+    <%- include('partials/footer') %>
+</html>
