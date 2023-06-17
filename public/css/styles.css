@@ -310,7 +310,7 @@ nav ul li a:hover::after {
 }
 form input,
 form textarea {
-  width: 80%;
+  width: 85%;
   border: 0;
   outline: none;
   background: #262626;
@@ -349,9 +349,9 @@ form .btn2 {
 
 table {
   align-items: center;
-  margin: 50;
+  margin: auto;
   padding: 20;
-  width: 1005;
+  width: 100%;
 }
 th,
 td {

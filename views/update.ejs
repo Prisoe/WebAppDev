@@ -42,11 +42,9 @@
     </button>
   </div>
 </form>
-<
-<form action="/business_list/648d1075b5338168f44ca2d1/delete" method="POST">
-  <button class="buttonsmall">
-    <a href="/business_list/<%= contact._id %>/delete">Delete</a>
-  </button>
+
+<form action="/business_list/<%= contact._id %>/delete" method="POST">
+  <button class="buttonsmall" type="submit">Delete</button>
 </form>
 
 <%-include('partials/footer') %>
