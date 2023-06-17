@@ -20,7 +20,7 @@
     <button type="submit">Login</button>
     <button><a href="/register">New, Sign Up</a></button>
   </div>
+  <% if (messages.error) { %> <%= messages.error %> <% } %>
 </form>
 
-<% if (messages.error) { %> <%= messages.error %> <% } %> <%-
-include('partials/footer') %>
+<%- include('partials/footer') %>
