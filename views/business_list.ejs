@@ -1,0 +1,41 @@
+<%- include('partials/header') %> <%- include('partials/head') %>
+
+<div class="table">
+  <h1>Business Contacts List</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Contact Name</th>
+        <th>Contact Number</th>
+        <th>Email Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.forEach(contact => { %>
+      <tr>
+        <td><%= contact.username%></td>
+        <td><%= contact.contactNumber %></td>
+        <td><%= contact.email %></td>
+        <td>
+          <button>
+            <a href="/business_list/<%= contact._id %>/update">Update</a>
+          </button>
+          <button>
+            <a href="/business_list/<%= contact._id %>/delete">Delete</a>
+          </button>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <div>
+    <form action="/logout?_method=DELETE" method="POST">
+      <button class="logout" type="submit">Log out</button>
+    </form>
+
+    <button><a href="/add_client">Add a Client</a></button>
+  </div>
+</div>
+<%-include('partials/footer') %>

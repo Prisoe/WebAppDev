@@ -308,7 +308,7 @@ nav ul li a:hover::after {
 }
 form input,
 form textarea {
-  width: 100%;
+  width: 80%;
   border: 0;
   outline: none;
   background: #262626;
@@ -340,6 +340,64 @@ form .btn2 {
 .copyright a {
   color: #ff004f;
   text-decoration: none;
+}
+
+/* Tables */
+
+table {
+  align-items: center;
+  margin: 50;
+  padding: 20;
+  width: 1005;
+}
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:hover {
+  background-color: #ff004f;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #ff004f;
+  color: white;
+}
+
+.table {
+  margin: auto;
+  width: 75%;
+  padding: 50px;
+  align-self: normal;
+  align-items: center;
+}
+
+/* Buttons */
+button {
+  width: 150px;
+
+  padding: 10px;
+}
+
+.logout {
+  width: 70%;
+  padding: 10px;
+  margin-left: 0%;
+}
+
+/* Inputs */
+input:focus {
+  border: 3px solid #555;
+}
+label {
+  display: block;
+}
+form {
+  align-self: center;
 }
 /* -----------------css for small screens--------- */
 nav .fas {
