@@ -35,7 +35,7 @@ initializePassport(passport);
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost:27017/Users", {
+  .connect("mongodb+srv://Prosper:Probol26@usersdb.qieknx7.mongodb.net/Users", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
