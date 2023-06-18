@@ -333,7 +333,7 @@ form .btn2 {
   background: #000000;
   font-weight: 300;
   margin-top: auto;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 
@@ -382,7 +382,6 @@ th {
 /* Buttons */
 button {
   width: 150px;
-
   padding: 10px;
 }
 
