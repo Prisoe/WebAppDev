@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Prosper Alabi",
   "license": "ISC",
   "engines": {
-    "node": "20.1.0"
+    "node": "16.1.0"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
