@@ -1,0 +1,24 @@
+{
+  "name": "WebAppDev",
+  "description": "Express + EJS app",
+  "env": {
+    "NODE_ENV": {
+      "value": "production"
+    },
+    "MONGODB_URI": {
+      "description": "Your MongoDB connection string"
+    },
+    "SESSION_KEY": {
+      "generator": "secret"
+    }
+  },
+  "scripts": {
+    "postdeploy": "echo Deployment complete"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}

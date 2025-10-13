@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: webappdev
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_VERSION
+        value: 20.1.0
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: SESSION_KEY
+        generateValue: true
+    healthCheckPath: /
+    autoDeploy: true

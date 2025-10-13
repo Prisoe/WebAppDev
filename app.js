@@ -34,13 +34,25 @@ initializePassport(passport);
 // MongoDB
 const mongoose = require("mongoose");
 
-mongoose
-  .connect("mongodb+srv://Prosper:Probol26@usersdb.qieknx7.mongodb.net/Users", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Connected to the database"))
-  .catch((error) => console.error("Error connecting to the database:", error));
+const mongoDbUri = process.env.MONGODB_URI;
+
+if (!mongoDbUri) {
+  console.error(
+    "Missing MONGODB_URI environment variable. Set it to your MongoDB connection string."
+  );
+  // Exit in production to avoid starting without a database. In dev, continue for easier local iteration.
+  if (process.env.NODE_ENV === "production") {
+    process.exit(1);
+  }
+} else {
+  mongoose
+    .connect(mongoDbUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => console.log("Connected to the database"))
+    .catch((error) => console.error("Error connecting to the database:", error));
+}
 
 // Use body-parser middleware to parse form data
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -63,7 +75,7 @@ app.use(express.urlencoded({ extended: false }));
 // Session
 app.use(
   session({
-    secret: process.env.SESSION_KEY,
+    secret: process.env.SESSION_KEY || "development-session-key",
     resave: false,
     saveUninitialized: false,
   })
