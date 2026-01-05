@@ -201,9 +201,23 @@ nav ul li a:hover::after {
 }
 .work-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px;
   margin-top: 50px;
+}
+
+/* Responsive: 2 columns on medium screens */
+@media (max-width: 1024px) {
+  .work-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: 1 column on small screens */
+@media (max-width: 768px) {
+  .work-list {
+    grid-template-columns: 1fr;
+  }
 }
 .work {
   border-radius: 10px;
@@ -224,19 +238,54 @@ nav ul li a:hover::after {
   position: absolute;
   left: 0;
   bottom: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  padding: 0 40px;
-  text-align: center;
+  padding: 20px;
+  text-align: left;
   font-size: 14px;
   transition: height 0.5s;
 }
+
+/* Custom scrollbar for layer */
+.layer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.layer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.layer::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.layer::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar for layer */
+.layer {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
 .layer h3 {
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  width: 100%;
+}
+.layer p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: left;
 }
 .layer a {
   margin-top: 20px;
@@ -255,6 +304,107 @@ nav ul li a:hover::after {
 }
 .work:hover .layer {
   height: 100%;
+}
+.project-links {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transition: background 0.3s;
+  text-align: center;
+  gap: 5px;
+}
+.project-links a:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.project-links a i {
+  margin-right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.sub-projects {
+  margin-top: 20px;
+  text-align: left;
+  width: 100%;
+  max-width: 100%;
+}
+.sub-projects h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #fff;
+  width: 100%;
+  text-align: left;
+}
+.sub-projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  padding-right: 5px;
+}
+
+/* Custom scrollbar styling for sub-projects list */
+.sub-projects-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sub-projects-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.sub-projects-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.sub-projects-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar styling */
+.sub-projects-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+.sub-projects-list li {
+  margin: 5px 0;
+}
+.sub-projects-list a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  transition: background 0.3s;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.sub-projects-list a:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+.sub-projects-list a i {
+  margin-right: 5px;
+  font-size: 10px;
 }
 .btn {
   display: block;

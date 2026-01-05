@@ -26,11 +26,6 @@ router.get("/contact", (req, res) => {
   res.render("contact");
 });
 
-router.get("/projects", (req, res) => {
-  // Render
-  res.render("projects");
-});
-
 router.get("/services", (req, res) => {
   // Render
   res.render("services");

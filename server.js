@@ -123,10 +123,6 @@ app.post("/contact", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/projects", (req, res) => {
-  res.render("projects");
-});
-
 app.get("/services", (req, res) => {
   res.render("services");
 });
