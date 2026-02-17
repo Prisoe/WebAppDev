@@ -1,0 +1,449 @@
+:root {
+    --bg: #080808;
+    --panel: #262626;
+    --panel2: #141414;
+    --text: #ffffff;
+    --muted: #ababab;
+    --accent: #ff004f;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+      sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: var(--accent);
+  }
+  
+  .container {
+    width: min(1150px, 92%);
+    margin: 0 auto;
+  }
+  
+  main {
+    padding: 48px 0;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease,
+      border-color 0.15s ease;
+  }
+  
+  .btn:hover {
+    background: rgba(255, 0, 79, 0.08);
+    border-color: rgba(255, 0, 79, 0.35);
+    transform: translateY(-1px);
+  }
+  
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  
+  .btn.primary:hover {
+    background: rgba(255, 0, 79, 0.9);
+  }
+  
+  .card {
+    background: linear-gradient(180deg, var(--panel), var(--panel2));
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+  
+  .kicker {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+  
+  .h1 {
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1.05;
+    margin: 10px 0 14px;
+  }
+  
+  .p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+  
+  @media (min-width: 920px) {
+    .grid.cols2 {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+    }
+  }
+  
+  /* Testimonials */
+.t-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;
+}
+
+.t-card{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  min-height: 280px;
+}
+
+.t-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.t-avatar{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  letter-spacing:0.5px;
+  border:1px solid var(--border);
+  background:
+    radial-gradient(500px 160px at 10% 10%, rgba(255,0,79,0.22), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+}
+
+.t-meta{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.t-name{
+  font-weight:800;
+  font-size:14px;
+  line-height:1.3;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.t-role{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.3;
+}
+
+.t-source{
+  font-size:12px;
+  padding:8px 10px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  color:var(--text);
+  text-decoration:none;
+  background:rgba(255,255,255,0.02);
+  white-space:nowrap;
+}
+.t-source:hover{ background:rgba(255,255,255,0.06); }
+
+.t-body{
+  margin-top:12px;
+  flex:1;
+  overflow:hidden;
+  /* closed: clamp with gradient fade */
+  max-height: 190px;
+  position:relative;
+}
+
+.t-body::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:46px;
+  background:linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.9));
+  pointer-events:none;
+}
+
+.t-body.open{
+  max-height:none;
+}
+.t-body.open::after{
+  display:none;
+}
+
+.t-text{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.65;         /* ✅ fixes the “jumbled” look */
+  letter-spacing:0.15px;
+  white-space:normal;
+  overflow-wrap:anywhere;    /* ✅ prevents long words/URLs breaking layout */
+}
+
+.t-foot{
+  margin-top:12px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.t-toggle{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.02);
+  color:var(--text);
+  padding:9px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:12px;
+}
+.t-toggle:hover{ background:rgba(255,255,255,0.06); }
+
+
+
+/* =========================
+   Projects Page (Modern)
+   ========================= */
+
+   .projectsHeader {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  
+  .projectsSub {
+    max-width: 980px;
+    line-height: 1.8;
+  }
+  
+  .projectsToolbar {
+    padding: 14px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .projectsToolbarLeft {
+    flex: 1 1 320px;
+    min-width: 220px;
+  }
+  
+  .projectsToolbarRight {
+    flex: 0 0 190px;
+  }
+  
+  .projectsInput,
+  .projectsSelect {
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    color: var(--text);
+    outline: none;
+  }
+  
+  .projectsInput::placeholder {
+    color: rgba(255,255,255,0.45);
+  }
+  
+  .projectsGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+  
+  /* Tag pill used across projects */
+  .tag {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  
+  /* Project card */
+  .projectCard {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    border-radius: 18px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 160px 1fr;
+    transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  }
+  
+  .projectCard:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,0,79,0.38);
+    background: rgba(255,255,255,0.045);
+  }
+  
+  .projectMedia {
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(700px 260px at 15% 10%, rgba(255,0,79,0.22), transparent 55%),
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  }
+  
+  .projectMediaGlow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(400px 180px at 25% 15%, rgba(255,0,79,0.22), transparent 60%);
+    opacity: 0.85;
+  }
+  
+  .projectMediaImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05) contrast(1.02);
+  }
+  
+  .projectMediaEmpty {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .projectBody {
+    padding: 16px;
+    display: grid;
+    gap: 12px;
+  }
+  
+  .projectMetaRow {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .projectHeader {
+    display: grid;
+    gap: 8px;
+  }
+  
+  .projectTitle {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: 0.2px;
+  }
+  
+  .projectSummary {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  
+  .projectHighlights {
+    display: grid;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+  
+  .projectHighlightsTitle {
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  
+  .projectHighlightsList {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 8px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+  }
+  
+  .projectImpact {
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    display: grid;
+    gap: 6px;
+  }
+  
+  .projectImpactLabel {
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  
+  .projectImpactText {
+    color: rgba(255,255,255,0.85);
+    line-height: 1.75;
+  }
+  
+  .projectActions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 4px;
+  }
+  
+  .projectSpacer {
+    flex: 1;
+  }
+  
+  /* Small screens tweak */
+  @media (max-width: 480px) {
+    .projectsToolbarRight {
+      flex: 1 1 220px;
+    }
+    .projectCard {
+      grid-template-rows: 150px 1fr;
+    }
+  }
+  
