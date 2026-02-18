@@ -35,7 +35,7 @@ export default function Contact() {
         <div className="kicker">Contact</div>
         <h1 className="h1">Contact Me</h1>
         <p className="p" style={{ maxWidth: 850 }}>
-          Send a message. This will be stored in the admin panel under Messages.
+          Fill out the form to send me a direct message and I'll get back to you, Thanks.
         </p>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 16 }}>
