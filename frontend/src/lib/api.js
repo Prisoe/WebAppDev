@@ -1,4 +1,9 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+// src/lib/api.js
+
+// ✅ In production (Render), frontend is served by the same Express app,
+// so API calls should be SAME-ORIGIN. Default to "" instead of localhost.
+// For local dev you can set: VITE_API_BASE_URL=http://localhost:3000
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
 
 /**
  * Core request helper
@@ -15,7 +20,10 @@ async function request(path, { method = "GET", body } = {}) {
     opts.body = JSON.stringify(body);
   }
 
-  const res = await fetch(`${API_BASE}${path}`, opts);
+  // ✅ Ensure path starts with /
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  const res = await fetch(`${API_BASE}${normalizedPath}`, opts);
 
   if (!res.ok) {
     throw new Error(await safeErr(res));
@@ -44,10 +52,17 @@ export function apiDelete(path) {
 }
 
 async function safeErr(res) {
+  // Try JSON first
   try {
     const data = await res.json();
     return data?.error || data?.message || JSON.stringify(data);
-  } catch {
-    return `${res.status} ${res.statusText}`;
-  }
+  } catch {}
+
+  // Fallback to text (often more useful than statusText)
+  try {
+    const t = await res.text();
+    if (t) return t.slice(0, 500);
+  } catch {}
+
+  return `${res.status} ${res.statusText}`;
 }
