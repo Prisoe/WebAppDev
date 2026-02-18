@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prosperity-com.onrender.com/sitemap.xml
