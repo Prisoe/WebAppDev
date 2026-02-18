@@ -17,7 +17,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-// Passport init (FIXED PATH)
+// Passport init
 const initializePassport = require("./passport-config");
 initializePassport(passport);
 
@@ -29,13 +29,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-// CORS for React dev server (cookies enabled)
-app.use(
-  cors({
-    origin: ["http://localhost:5173"],
-    credentials: true,
-  })
-);
+// In production (single deploy), frontend + backend are SAME ORIGIN,
+// so you do NOT need CORS.
+// In dev, enable CORS for Vite (cookies enabled).
+if (process.env.NODE_ENV !== "production") {
+  app.use(
+    cors({
+      origin: ["http://localhost:5173"],
+      credentials: true,
+    })
+  );
+}
 
 // Session (required for passport)
 app.use(
@@ -46,6 +50,7 @@ app.use(
     cookie: {
       httpOnly: true,
       sameSite: "lax",
+      secure: process.env.NODE_ENV === "production", // ✅ needed on HTTPS (Render)
     },
   })
 );
@@ -63,6 +68,21 @@ app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/admin/projects", require("./routes/api/admin.projects"));
 app.use("/api/admin/messages", require("./routes/api/admin.messages"));
 app.use("/api/admin/contacts", require("./routes/api/admin.contacts"));
+
+// ------------------------
+// Serve Frontend (Production)
+// ------------------------
+if (process.env.NODE_ENV === "production") {
+  // NOTE:
+  // repo structure: /Backend/server.js and /frontend/dist
+  const distPath = path.join(__dirname, "..", "frontend", "dist");
+  app.use(express.static(distPath));
+
+  // Any non-API route should return React index.html
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+}
 
 // ------------------------
 // Start server
