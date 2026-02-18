@@ -17,7 +17,6 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-// Passport init
 const initializePassport = require("./passport-config");
 initializePassport(passport);
 
@@ -29,9 +28,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-// In production (single deploy), frontend + backend are SAME ORIGIN,
-// so you do NOT need CORS.
-// In dev, enable CORS for Vite (cookies enabled).
+// ✅ Trust proxy on Render (needed for secure cookies behind proxy)
+app.set("trust proxy", 1);
+
+// ------------------------
+// CORS (ONLY for local dev)
+// In production, frontend is served by the same domain => no CORS needed.
+// ------------------------
 if (process.env.NODE_ENV !== "production") {
   app.use(
     cors({
@@ -41,7 +44,9 @@ if (process.env.NODE_ENV !== "production") {
   );
 }
 
+// ------------------------
 // Session (required for passport)
+// ------------------------
 app.use(
   session({
     secret: process.env.SESSION_KEY,
@@ -49,8 +54,8 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      sameSite: "lax",
-      secure: process.env.NODE_ENV === "production", // ✅ needed on HTTPS (Render)
+      sameSite: process.env.NODE_ENV === "production" ? "lax" : "lax",
+      secure: process.env.NODE_ENV === "production", // ✅ required for https cookies
     },
   })
 );
@@ -70,15 +75,13 @@ app.use("/api/admin/messages", require("./routes/api/admin.messages"));
 app.use("/api/admin/contacts", require("./routes/api/admin.contacts"));
 
 // ------------------------
-// Serve Frontend (Production)
+// ✅ Serve frontend build (production)
 // ------------------------
 if (process.env.NODE_ENV === "production") {
-  // NOTE:
-  // repo structure: /Backend/server.js and /frontend/dist
   const distPath = path.join(__dirname, "..", "frontend", "dist");
   app.use(express.static(distPath));
 
-  // Any non-API route should return React index.html
+  // ✅ React Router fallback
   app.get("*", (req, res) => {
     res.sendFile(path.join(distPath, "index.html"));
   });
